@@ -6,14 +6,13 @@
     <div id="top" class="wall"></div>
     <div id="ship" class="wall"></div>
     <div id="container">
-      <el-form :model="model" :rules="rules">
-        <el-form-item prop="username">
-          <label for="username">用户名: </label>
-          <el-input type="text" v-model="model.username"></el-input>
+      <h1>LOGIN</h1>
+      <el-form ref="login-form" :model="model" :rules="rules" label-width="80px">
+        <el-form-item label="用户名: " prop="username">
+          <el-input v-model="model.username" clearable></el-input>
         </el-form-item>
-        <el-form-item prop="password">
-          <label for="username">密码: </label>
-          <el-input type="password" v-model="model.password"></el-input>
+        <el-form-item label="密码: " prop="upwd">
+          <el-input v-model="model.upwd" show-password clearable></el-input>
         </el-form-item>
       </el-form>
     </div>
@@ -26,13 +25,13 @@ export default {
     return {
       model: {
         username: "",
-        password: "",
+        upwd: "",
       },
       rules: {
         username: [
           { required: true, message: "请输入用户名", trigger: "blur" },
         ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        upwd: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
     };
   },
@@ -45,9 +44,6 @@ export default {
 #login-page {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   // 背景动图部分 - 开始
   .wall {
     position: absolute;
@@ -117,10 +113,26 @@ export default {
   }
   // 背景动图部分 - 结束
   #container {
-    width: 500px;
-    height: 400px;
-    text-align: center;
-    box-shadow: 10px 10px 20px 20px #941018;
+    width: 330px;
+    height: 330px;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    margin-top: -180px;
+    right: 10%;
+    z-index: 5;
+    box-shadow: 0px 0px 11px 0px #ccc;
+    border-radius: 20px;
+    h1 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .el-form {
+      ::v-deep .el-form-item__label {
+        color: #fff;
+      }
+    }
   }
 }
 </style>
