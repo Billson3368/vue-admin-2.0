@@ -6,38 +6,42 @@
     <div id="top" class="wall"></div>
     <div id="ship" class="wall"></div>
     <div id="container">
-      <h1 id="logo">
-        <i class="iconfont icon-L_square_solid"></i>
-        <img :src="logo" alt="logo" />
-        <i class="iconfont icon-G_square_solid"></i>
-        <i class="iconfont icon-I_square_solid"></i>
-        <i class="iconfont icon-N_square_solid"></i>
-      </h1>
-      <el-form ref="login-form" :model="model" :rules="rules">
-        <el-form-item prop="username">
-          <el-input
-            v-model="model.username"
-            placeholder="请输入用户名"
-            clearable
-          >
-            <i slot="prefix" class="el-input__icon el-icon-user"></i>
-          </el-input>
-        </el-form-item>
-        <el-form-item prop="upwd">
-          <el-input
-            v-model="model.upwd"
-            placeholder="请输入密码"
-            @keyup.enter.native="login"
-            show-password
-            clearable
-          >
-            <i slot="prefix" class="el-input__icon el-icon-lock"></i>
-          </el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="plain" @click="login">登&nbsp;&nbsp;录</el-button>
-        </el-form-item>
-      </el-form>
+      <img :src="logo" id="entrance" :class="{'animated': entranceStatus}" @click="showLoginForm" alt="entrance" />
+      <div class="wrapper" :class="{'animated': entranceStatus}">
+        <h1 id="logo">
+          <img :src="logo" @click="hideLoginForm" alt="logo" />&nbsp;
+          <i class="iconfont icon-letter-l"></i>
+          <i class="iconfont icon-letter-o"></i>
+          <i class="iconfont icon-letter-g"></i>
+          <i class="iconfont icon-letter-i"></i>
+          <i class="iconfont icon-letter-n"></i>
+        </h1>
+        <el-form ref="login-form" :model="model" :rules="rules">
+          <el-form-item prop="username">
+            <el-input
+              v-model="model.username"
+              placeholder="请输入用户名"
+              clearable
+            >
+              <i slot="prefix" class="el-input__icon el-icon-user"></i>
+            </el-input>
+          </el-form-item>
+          <el-form-item prop="upwd">
+            <el-input
+              v-model="model.upwd"
+              placeholder="请输入密码"
+              @keyup.enter.native="login"
+              show-password
+              clearable
+            >
+              <i slot="prefix" class="el-input__icon el-icon-lock"></i>
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="plain" @click="login">To The Moon!</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +52,7 @@ export default {
   data() {
     return {
       logo,
+      entranceStatus: false,
       model: {
         username: "",
         upwd: "",
@@ -61,9 +66,15 @@ export default {
     };
   },
   methods: {
+    showLoginForm() {
+      this.entranceStatus = true;
+    },
+    hideLoginForm() {
+      this.entranceStatus = false;
+    },
     login() {
       console.log(this.model.username, this.model.upwd);
-    }
+    },
   },
 };
 </script>
@@ -158,45 +169,73 @@ export default {
   }
   // 背景动图部分 - 结束
   #container {
-    width: 330px;
-    height: 330px;
-    padding: 15px;
-    opacity: 0.1;
+    width: 360px;
+    height: 360px;
     position: absolute;
     top: 50%;
     margin-top: -180px;
     right: 15%;
     z-index: 5;
-    box-shadow: 0px 0px 11px 0px #ccc;
-    border-radius: 20px;
-    transition: opacity 3.3s;
-    &:hover {
-      opacity: 1;
-    }
-    #logo {
-      margin-bottom: 30px;
-      text-align: center;
-      color: #fff;
-      height: 48px;
-      .iconfont {
-        font-size: 48px;
+    // &:hover {
+    //   opacity: 1;
+    // }
+    #entrance {
+      width: 36px;
+      z-index: 6;
+      position: absolute;
+      top: 23px;
+      left: 48px;
+      transform: rotate(45deg) scale(4);
+      transition: all 1s;
+      filter: grayscale(1);
+      &:hover {
+        transform: rotate(3600deg) scale(4);
       }
-      img {
-        width: 36px;
-        animation: rotate-fast 60s linear infinite;
+      &.animated {
+        opacity: 0;
+        z-index: -9999;
+        transform: rotate(90045deg) scale(1);
       }
     }
-    .el-form {
-      padding: 20px;
-      ::v-deep .el-form-item__label {
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      border-radius: 20px;
+      opacity: 0;
+      box-shadow: 0px 0px 11px 0px #ccc;
+      transition: opacity 3.3s;
+      &.animated {
+        opacity: 1;
+      }
+      #logo {
+        margin-bottom: 30px;
+        text-align: center;
         color: #fff;
+        height: 48px;
+        .iconfont {
+          font-size: 48px;
+        }
+        img {
+          width: 36px;
+          animation: rotate-fast 60s linear infinite;
+        }
       }
-      ::v-deep .el-input__icon {
-        font-size: 18px;
-      }
-      .el-button {
-        margin-top: 15px;
-        width: 100%;
+      .el-form {
+        padding: 20px;
+        ::v-deep .el-form-item__label {
+          color: #fff;
+        }
+        ::v-deep .el-input__icon {
+          font-size: 18px;
+        }
+        .el-button {
+          width: 100%;
+          margin-top: 34px;
+          font-size: 16px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          padding: 11px 20px;
+        }
       }
     }
   }

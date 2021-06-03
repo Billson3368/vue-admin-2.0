@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1622703447961') format('truetype');
+  src: url('iconfont.ttf?t=1622737048404') format('truetype');
 }
 
 .iconfont {
@@ -11,43 +11,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-N_square_solid:before {
-  content: "\e639";
+.icon-letter-i:before {
+  content: "\e64c";
 }
 
-.icon-I_square_solid:before {
-  content: "\e63a";
+.icon-letter-g:before {
+  content: "\e64d";
 }
 
-.icon-L_square_solid:before {
-  content: "\e63b";
+.icon-letter-l:before {
+  content: "\e64e";
 }
 
-.icon-O_square_solid:before {
-  content: "\e63c";
+.icon-letter-o:before {
+  content: "\e650";
 }
 
-.icon-G_square_solid:before {
-  content: "\e644";
-}
-
-.icon-G_round_solid:before {
-  content: "\e646";
-}
-
-.icon-I_round_solid:before {
-  content: "\e647";
-}
-
-.icon-O_round_solid:before {
-  content: "\e648";
-}
-
-.icon-L_round_solid:before {
-  content: "\e649";
-}
-
-.icon-N_round_solid:before {
-  content: "\e64a";
+.icon-letter-n:before {
+  content: "\e65f";
 }
 
