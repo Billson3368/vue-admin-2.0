@@ -1,0 +1,79 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15323933",
+      "name": "N_square_solid_字母n",
+      "font_class": "N_square_solid",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "15323939",
+      "name": "I_square_solid_字母i",
+      "font_class": "I_square_solid",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "15323940",
+      "name": "L_square_solid_字母l",
+      "font_class": "L_square_solid",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "15323943",
+      "name": "O_square_solid_字母o",
+      "font_class": "O_square_solid",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "15368212",
+      "name": "G_square_solid_字母g",
+      "font_class": "G_square_solid",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "15464814",
+      "name": "G_round_solid_字母g",
+      "font_class": "G_round_solid",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "15464817",
+      "name": "I_round_solid_字母i_by_climei",
+      "font_class": "I_round_solid",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "15464819",
+      "name": "O_round_solid_字母o_by_climei",
+      "font_class": "O_round_solid",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "15464821",
+      "name": "L_round_solid_字母l_by_climei",
+      "font_class": "L_round_solid",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "15464825",
+      "name": "N_round_solid_字母n_by_climei",
+      "font_class": "N_round_solid",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    }
+  ]
+}

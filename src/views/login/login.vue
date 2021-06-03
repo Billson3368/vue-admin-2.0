@@ -6,13 +6,36 @@
     <div id="top" class="wall"></div>
     <div id="ship" class="wall"></div>
     <div id="container">
-      <h1>LOGIN</h1>
-      <el-form ref="login-form" :model="model" :rules="rules" label-width="80px">
-        <el-form-item label="用户名: " prop="username">
-          <el-input v-model="model.username" clearable></el-input>
+      <h1 id="logo">
+        <i class="iconfont icon-L_square_solid"></i>
+        <img :src="logo" alt="logo" />
+        <i class="iconfont icon-G_square_solid"></i>
+        <i class="iconfont icon-I_square_solid"></i>
+        <i class="iconfont icon-N_square_solid"></i>
+      </h1>
+      <el-form ref="login-form" :model="model" :rules="rules">
+        <el-form-item prop="username">
+          <el-input
+            v-model="model.username"
+            placeholder="请输入用户名"
+            clearable
+          >
+            <i slot="prefix" class="el-input__icon el-icon-user"></i>
+          </el-input>
         </el-form-item>
-        <el-form-item label="密码: " prop="upwd">
-          <el-input v-model="model.upwd" show-password clearable></el-input>
+        <el-form-item prop="upwd">
+          <el-input
+            v-model="model.upwd"
+            placeholder="请输入密码"
+            @keyup.enter.native="login"
+            show-password
+            clearable
+          >
+            <i slot="prefix" class="el-input__icon el-icon-lock"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="plain" @click="login">登&nbsp;&nbsp;录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -20,9 +43,11 @@
 </template>
 
 <script>
+import logo from "@/assets/logo.png";
 export default {
   data() {
     return {
+      logo,
       model: {
         username: "",
         upwd: "",
@@ -35,7 +60,10 @@ export default {
       },
     };
   },
-  mounted() {
+  methods: {
+    login() {
+      console.log(this.model.username, this.model.upwd);
+    }
   },
 };
 </script>
@@ -111,26 +139,64 @@ export default {
       background-position: 0 600%;
     }
   }
+  @keyframes rotate-fast {
+    0% {
+      opacity: 0.75;
+      filter: grayscale(1);
+      transform: rotate(0);
+    }
+    50% {
+      opacity: 0.5;
+      filter: grayscale(0);
+      transform: rotate(90000deg);
+    }
+    100% {
+      opacity: 0.75;
+      filter: grayscale(1);
+      transform: rotate(18000deg);
+    }
+  }
   // 背景动图部分 - 结束
   #container {
     width: 330px;
     height: 330px;
     padding: 15px;
+    opacity: 0.1;
     position: absolute;
     top: 50%;
     margin-top: -180px;
-    right: 10%;
+    right: 15%;
     z-index: 5;
     box-shadow: 0px 0px 11px 0px #ccc;
     border-radius: 20px;
-    h1 {
-      color: #fff;
+    transition: opacity 3.3s;
+    &:hover {
+      opacity: 1;
+    }
+    #logo {
+      margin-bottom: 30px;
       text-align: center;
-      margin-bottom: 15px;
+      color: #fff;
+      height: 48px;
+      .iconfont {
+        font-size: 48px;
+      }
+      img {
+        width: 36px;
+        animation: rotate-fast 60s linear infinite;
+      }
     }
     .el-form {
+      padding: 20px;
       ::v-deep .el-form-item__label {
         color: #fff;
+      }
+      ::v-deep .el-input__icon {
+        font-size: 18px;
+      }
+      .el-button {
+        margin-top: 15px;
+        width: 100%;
       }
     }
   }
