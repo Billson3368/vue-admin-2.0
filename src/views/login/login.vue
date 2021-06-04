@@ -189,7 +189,8 @@ export default {
       transition: all 1s;
       filter: grayscale(1);
       &:hover {
-        transform: rotate(3600deg) scale(4);
+        transform: rotate(36000deg) scale(4);
+        transition: all 60s ease;
       }
       &.animated {
         opacity: 0;
