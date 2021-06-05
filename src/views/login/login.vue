@@ -6,8 +6,14 @@
     <div id="top" class="wall"></div>
     <div id="ship" class="wall"></div>
     <div id="container">
-      <img :src="logo" id="entrance" :class="{'animated': entranceStatus}" @click="showLoginForm" alt="entrance" />
-      <div class="wrapper" :class="{'animated': entranceStatus}">
+      <img
+        :src="logo"
+        id="entrance"
+        :class="{ animated: entranceStatus }"
+        @click="showLoginForm"
+        alt="entrance"
+      />
+      <div class="wrapper" :class="{ animated: entranceStatus }">
         <h1 id="logo">
           <img :src="logo" @click="hideLoginForm" alt="logo" />&nbsp;
           <i class="iconfont icon-letter-l"></i>
@@ -30,7 +36,7 @@
             <el-input
               v-model="model.upwd"
               placeholder="请输入密码"
-              @keyup.enter.native="login"
+              @keyup.enter.native="handleLogin"
               show-password
               clearable
             >
@@ -38,7 +44,9 @@
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="plain" @click="login">To The Moon!</el-button>
+            <el-button type="plain" @click="handleLogin"
+              >To The Moon!</el-button
+            >
           </el-form-item>
         </el-form>
       </div>
@@ -48,6 +56,7 @@
 
 <script>
 import logo from "@/assets/logo.png";
+import { login } from "@/api/login";
 export default {
   data() {
     return {
@@ -72,8 +81,23 @@ export default {
     hideLoginForm() {
       this.entranceStatus = false;
     },
-    login() {
-      console.log(this.model.username, this.model.upwd);
+    handleLogin() {
+      this.$refs["login-form"].validate((valid) => {
+        if (!valid) return;
+
+        let param = {
+          username: this.model.username,
+          upwd: this.model.upwd,
+        };
+        login(param).then((res) => {
+          if (res.code == 0) {
+            this.$message({
+              message: "登录成功! HT to the moon! ヾ(@^▽^@)ノ",
+              type: "success",
+            });
+          }
+        });
+      });
     },
   },
 };
@@ -234,7 +258,7 @@ export default {
           width: 100%;
           margin-top: 34px;
           font-size: 16px;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
           padding: 11px 20px;
         }
       }

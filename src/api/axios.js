@@ -4,7 +4,7 @@ import {
 } from 'element-ui'
 
 const server = axios.create({
-  baseURL: '127.0.0.1:1018',
+  baseURL: 'http://localhost:1018',
   timeout: 15000
 })
 
@@ -18,11 +18,11 @@ server.interceptors.response.use(res => {
   const {
     msg,
     code
-  } = res;
+  } = res.data;
   if (code !== 0) {
-    Message.error(msg)
+    Message.error(msg);
   } else {
-    return res;
+    return res.data;
   }
 }, error => {
   return Promise.reject(error)

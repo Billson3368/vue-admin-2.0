@@ -7,11 +7,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './styles/iconfont/iconfont.css';
 import './styles/iconfont/iconfont.js';
-import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-Vue.use(axios)
 
 new Vue({
   router,
